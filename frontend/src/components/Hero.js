@@ -83,7 +83,7 @@ const Hero = () => {
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group"
               >
-                <stat.icon className="w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                {React.createElement(stat.icon, { className: "w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform" })}
                 <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-emerald-100 font-medium">{stat.label}</div>
               </div>
