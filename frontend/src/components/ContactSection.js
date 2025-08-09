@@ -119,7 +119,7 @@ const ContactSection = () => {
                         style={{ transitionDelay: `${index * 150}ms` }}
                       >
                         <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <info.icon className="w-6 h-6 text-yellow-400" />
+                          {React.createElement(info.icon, { className: "w-6 h-6 text-yellow-400" })}
                         </div>
                         <div>
                           <h4 className="font-semibold text-white mb-1">{info.title}</h4>
