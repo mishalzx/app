@@ -89,7 +89,7 @@ const WhyAriflex = () => {
                 >
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition-colors">
-                      <benefit.icon className="w-6 h-6 text-emerald-700 group-hover:text-yellow-600 transition-colors" />
+                      {React.createElement(benefit.icon, { className: "w-6 h-6 text-emerald-700 group-hover:text-yellow-600 transition-colors" })}
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-emerald-900 mb-2">{benefit.title}</h4>
