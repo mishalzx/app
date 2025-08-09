@@ -110,7 +110,7 @@ const AboutSection = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-100 transition-colors">
-                  <service.icon className="w-6 h-6 text-emerald-700 group-hover:text-yellow-600 transition-colors" />
+                  {React.createElement(service.icon, { className: "w-6 h-6 text-emerald-700 group-hover:text-yellow-600 transition-colors" })}
                 </div>
                 <h4 className="text-xl font-bold text-emerald-900 mb-3">{service.title}</h4>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
