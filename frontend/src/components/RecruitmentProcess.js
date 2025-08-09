@@ -238,7 +238,7 @@ const RecruitmentProcess = () => {
               {processSteps.map((step, index) => (
                 <div key={index} className="text-center relative group">
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-yellow-100 transition-all duration-300 group-hover:scale-110">
-                    <step.icon className="w-7 h-7 text-emerald-700 group-hover:text-yellow-600 transition-colors" />
+                    {React.createElement(step.icon, { className: "w-7 h-7 text-emerald-700 group-hover:text-yellow-600 transition-colors" })}
                   </div>
                   <h4 className="text-sm font-bold text-emerald-900 mb-1">{step.title}</h4>
                   <p className="text-xs text-yellow-600">{step.duration}</p>
