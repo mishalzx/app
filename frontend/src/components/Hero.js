@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ChevronRight, Award, Users, Target } from "lucide-react";
-import { Button } from "./ui/button";
+import { Award, Users, Target } from "lucide-react";
 
 const Hero = () => {
   const [currentYear] = useState(new Date().getFullYear());
@@ -9,13 +8,6 @@ const Hero = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const stats = [
     { icon: Award, value: "10+", label: "Years Experience" },
@@ -49,29 +41,11 @@ const Hero = () => {
               {currentYear}
             </div>
 
-            <p className="text-xl text-emerald-100 max-w-3xl mx-auto mb-12 leading-relaxed">
+            <p className="text-xl text-emerald-100 max-w-3xl mx-auto mb-16 leading-relaxed">
               Transforming organizations with top-tier executive search, outsourcing, 
               recruitment process outsourcing (RPO), and consultation services across 
               governmental, semi-governmental, and private sectors.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Button 
-                onClick={scrollToContact}
-                className="bg-yellow-500 hover:bg-yellow-400 text-emerald-900 font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-              >
-                Get Started
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-              </Button>
-              
-              <Button 
-                variant="outline"
-                onClick={() => document.querySelector("#about").scrollIntoView({ behavior: "smooth" })}
-                className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-emerald-900 font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105"
-              >
-                Learn More
-              </Button>
-            </div>
           </div>
 
           {/* Stats */}

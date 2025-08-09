@@ -9,6 +9,7 @@ const Header = ({ scrollY }) => {
     { name: "Services", href: "#services" },
     { name: "REACH", href: "#reach" },
     { name: "Process", href: "#process" },
+    { name: "Organization", href: "#organization" },
     { name: "Clients", href: "#clients" },
     { name: "Contact", href: "#contact" },
   ];

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Calculator, DollarSign, Shield, Clock, CheckCircle } from "lucide-react";
-import { Button } from "./ui/button";
+import { Calculator, DollarSign, Shield, CheckCircle } from "lucide-react";
 
 const FeeStructure = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +29,7 @@ const FeeStructure = () => {
       title: "Percentage of Annual Salary",
       subtitle: "Flexible, Performance-Based",
       icon: Calculator,
-      charges: "__% *",
+      charges: "8%",
       engagement: "1,000 SAR per head",
       unit: "Sourced by Ariflex",
       benefits: [
@@ -61,19 +60,14 @@ const FeeStructure = () => {
 
   const replacementTerms = [
     {
-      period: "Within 30 days",
-      compensation: "75%",
-      description: "If candidate ceases employment within the first 30 days"
-    },
-    {
-      period: "31-60 days",
-      compensation: "50%",
-      description: "If candidate ceases employment between 31 and 60 days"
+      period: "Within 60 days",
+      compensation: "Free",
+      description: "Complete free replacement offer"
     },
     {
       period: "61-90 days",
       compensation: "25%",
-      description: "If candidate ceases employment between 61 and 90 days"
+      description: "25% compensation for finding alternative candidate"
     }
   ];
 
@@ -213,13 +207,15 @@ const FeeStructure = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {replacementTerms.map((term, index) => (
                   <div 
                     key={index}
                     className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:scale-105"
                   >
-                    <div className="text-3xl font-bold text-yellow-400 mb-2">{term.compensation}</div>
+                    <div className={`text-3xl font-bold mb-2 ${term.compensation === 'Free' ? 'text-green-400' : 'text-yellow-400'}`}>
+                      {term.compensation === 'Free' ? 'FREE' : term.compensation}
+                    </div>
                     <div className="text-emerald-100 font-semibold mb-2">{term.period}</div>
                     <div className="text-emerald-200 text-sm">{term.description}</div>
                   </div>
@@ -228,7 +224,6 @@ const FeeStructure = () => {
 
               <div className="mt-12 text-center">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 inline-block">
-                  <Clock className="w-8 h-8 text-yellow-400 mx-auto mb-4" />
                   <p className="text-emerald-100 text-lg">
                     <strong className="text-yellow-400">Extended Coverage:</strong> Security checks, credential checks, and similar verifications are outside the reference-check SLA.
                   </p>

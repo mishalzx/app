@@ -1,19 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -32,30 +21,6 @@ const ContactSection = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', company: '', message: '' });
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 1500);
-  };
 
   const contactInfo = [
     {
@@ -156,135 +121,32 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-emerald-100">
-              {isSubmitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold text-emerald-900 mb-4">Message Sent Successfully!</h3>
-                  <p className="text-gray-700 mb-6">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
-                  </p>
-                  <Button
-                    onClick={() => setIsSubmitted(false)}
-                    className="bg-emerald-700 hover:bg-emerald-800 text-white"
-                  >
-                    Send Another Message
-                  </Button>
+            {/* Thank You Note */}
+            <div className="bg-gradient-to-br from-emerald-50 to-yellow-50 rounded-3xl p-8 md:p-12 border border-emerald-100 flex items-center">
+              <div className="text-center w-full">
+                <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                  <svg className="w-10 h-10 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
                 </div>
-              ) : (
-                <>
-                  <h3 className="text-2xl font-bold text-emerald-900 mb-6">Send us a Message</h3>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-emerald-900 mb-2">
-                          Full Name *
-                        </label>
-                        <Input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="border-emerald-200 focus:border-yellow-400 focus:ring-yellow-400"
-                          placeholder="Your full name"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-emerald-900 mb-2">
-                          Email Address *
-                        </label>
-                        <Input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="border-emerald-200 focus:border-yellow-400 focus:ring-yellow-400"
-                          placeholder="your.email@company.com"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-emerald-900 mb-2">
-                        Company/Organization
-                      </label>
-                      <Input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="border-emerald-200 focus:border-yellow-400 focus:ring-yellow-400"
-                        placeholder="Your company name"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-emerald-900 mb-2">
-                        Message *
-                      </label>
-                      <Textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        rows={5}
-                        className="border-emerald-200 focus:border-yellow-400 focus:ring-yellow-400"
-                        placeholder="Tell us about your recruitment needs..."
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:scale-100"
-                    >
-                      {isSubmitting ? (
-                        <div className="flex items-center justify-center">
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                          Sending...
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center">
-                          Send Message
-                          <Send className="ml-2" size={20} />
-                        </div>
-                      )}
-                    </Button>
-                  </form>
-                </>
-              )}
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-emerald-50 to-yellow-50 rounded-3xl p-8 md:p-12 border border-emerald-100">
-              <h3 className="text-3xl font-bold text-emerald-900 mb-4">
-                Ready to Transform Your Recruitment?
-              </h3>
-              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                Join the leading organizations that trust Ariflex for their executive search and talent acquisition needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  className="bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-                  onClick={() => {
-                    const email = document.querySelector('input[name="email"]');
-                    if (email) email.focus();
-                  }}
-                >
-                  Start Your Journey
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-2 border-emerald-700 text-emerald-700 hover:bg-emerald-700 hover:text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
-                  onClick={() => window.open('tel:+966540039965')}
-                >
-                  Call Now
-                </Button>
+                
+                <h3 className="text-3xl font-bold text-emerald-900 mb-6">
+                  Thank You for Your Trust
+                </h3>
+                
+                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                  We appreciate the opportunity to present our comprehensive recruitment solutions for Bluemoon Marketing. 
+                  Your success is our commitment.
+                </p>
+                
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-emerald-200">
+                  <p className="text-lg text-emerald-800 font-medium italic">
+                    "Together, we build exceptional teams that drive organizational excellence and achieve remarkable results."
+                  </p>
+                  <div className="mt-4 text-emerald-600 font-semibold">
+                    - Team Ariflex
+                  </div>
+                </div>
               </div>
             </div>
           </div>
