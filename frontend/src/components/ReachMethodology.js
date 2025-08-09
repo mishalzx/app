@@ -145,7 +145,7 @@ const ReachMethodology = () => {
                   <div>
                     <div className="flex items-center mb-6">
                       <div className={`w-16 h-16 ${reachSteps[activeStep].color} rounded-2xl flex items-center justify-center mr-4 shadow-lg`}>
-                        <reachSteps[activeStep].icon className="w-8 h-8 text-white" />
+                        {React.createElement(reachSteps[activeStep].icon, { className: "w-8 h-8 text-white" })}
                       </div>
                       <div>
                         <h3 className="text-3xl font-bold text-emerald-900">
