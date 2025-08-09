@@ -96,29 +96,6 @@ const ContactSection = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Quick Stats */}
-              <div className="bg-gray-50 rounded-3xl p-8">
-                <h3 className="text-2xl font-bold text-emerald-900 mb-6">Why Choose Ariflex?</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-900 mb-1">24h</div>
-                    <div className="text-gray-600 text-sm">Response Time</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-900 mb-1">10+</div>
-                    <div className="text-gray-600 text-sm">Years Experience</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-900 mb-1">95%</div>
-                    <div className="text-gray-600 text-sm">Success Rate</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-900 mb-1">100%</div>
-                    <div className="text-gray-600 text-sm">Satisfaction</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Thank You Note */}
