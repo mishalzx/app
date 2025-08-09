@@ -70,7 +70,7 @@ const ClientPortfolio = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={`w-12 h-12 ${sector.color} rounded-xl flex items-center justify-center mb-4`}>
-                  <sector.icon className="w-6 h-6 text-white" />
+                  {React.createElement(sector.icon, { className: "w-6 h-6 text-white" })}
                 </div>
                 <h3 className="text-xl font-bold text-emerald-900 mb-2">{sector.name}</h3>
                 <p className="text-gray-600">{sector.count} Clients</p>
