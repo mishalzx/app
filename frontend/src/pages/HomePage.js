@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import AboutSection from "../components/AboutSection";
-import WhyAriflex from "../components/WhyAriflex";
 import ReachMethodology from "../components/ReachMethodology";
 import RecruitmentProcess from "../components/RecruitmentProcess";
 import ClientPortfolio from "../components/ClientPortfolio";
+import OrgStructure from "../components/OrgStructure";
 import FeeStructure from "../components/FeeStructure";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
@@ -24,10 +24,10 @@ const HomePage = () => {
       <Header scrollY={scrollY} />
       <Hero />
       <AboutSection />
-      <WhyAriflex />
       <ReachMethodology />
       <RecruitmentProcess />
       <ClientPortfolio />
+      <OrgStructure />
       <FeeStructure />
       <ContactSection />
       <Footer />

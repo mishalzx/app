@@ -1,156 +1,104 @@
 import React from "react";
-import { Mail, Phone, MapPin, Award, Users, Target } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerSections = [
-    {
-      title: "Services",
-      links: [
-        { name: "Executive Search", href: "#services" },
-        { name: "Outsourcing", href: "#services" },
-        { name: "RPO Services", href: "#services" },
-        { name: "Consultation", href: "#services" }
-      ]
-    },
-    {
-      title: "Process",
-      links: [
-        { name: "REACH Methodology", href: "#reach" },
-        { name: "Recruitment Process", href: "#process" },
-        { name: "Quality Assurance", href: "#process" },
-        { name: "Follow-up Support", href: "#process" }
-      ]
-    },
-    {
-      title: "About",
-      links: [
-        { name: "Our Story", href: "#about" },
-        { name: "Why Choose Us", href: "#services" },
-        { name: "Client Portfolio", href: "#clients" },
-        { name: "Success Stories", href: "#clients" }
-      ]
-    }
-  ];
-
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-emerald-900 text-white">
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
+    <footer className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 text-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-48 h-48 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Main Footer Content */}
+        <div className="text-center">
+          {/* Logo */}
+          <div className="mb-8">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_5f2f4da9-f311-4324-ba20-5edbfc7b4dcf/artifacts/3q3yn9wl_Ariflex%20Logo-01.png"
+              alt="Ariflex Logo"
+              className="h-16 w-auto mx-auto mb-4 brightness-0 invert opacity-90"
+            />
+          </div>
+
+          {/* Inspirational Quote */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/20 mb-12 max-w-4xl mx-auto">
             <div className="mb-6">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_5f2f4da9-f311-4324-ba20-5edbfc7b4dcf/artifacts/3q3yn9wl_Ariflex%20Logo-01.png"
-                alt="Ariflex Logo"
-                className="h-12 w-auto mb-4 brightness-0 invert"
-              />
-              <h3 className="text-2xl font-bold text-yellow-400 mb-4">Ariflex</h3>
+              <svg className="w-12 h-12 text-yellow-400 mx-auto opacity-60" fill="currentColor" viewBox="0 0 32 32">
+                <path d="M10 8c-3.3 0-6 2.7-6 6v10h6V14c0-2.2 1.8-4 4-4V8h-4zm12 0c-3.3 0-6 2.7-6 6v10h6V14c0-2.2 1.8-4 4-4V8h-4z"/>
+              </svg>
             </div>
-            <p className="text-emerald-100 leading-relaxed mb-6">
-              A Saudi-grown company providing top‑tier executive search, outsourcing, 
-              recruitment process outsourcing (RPO), and consultation services across 
-              governmental, semi‑governmental, and private sectors.
-            </p>
             
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 text-yellow-400 mr-3" />
-                <a href="mailto:ahmed@ariflex.co" className="text-emerald-100 hover:text-yellow-400 transition-colors">
-                  ahmed@ariflex.co
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 text-yellow-400 mr-3" />
-                <a href="tel:+966540039965" className="text-emerald-100 hover:text-yellow-400 transition-colors">
-                  +966 54 003 9965
-                </a>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="w-5 h-5 text-yellow-400 mr-3" />
-                <span className="text-emerald-100">Saudi Arabia</span>
-              </div>
+            <blockquote className="text-2xl md:text-3xl font-light text-white leading-relaxed mb-6 italic">
+              "Excellence in recruitment is not just about finding the right talent—it's about building the future of organizations, one exceptional leader at a time."
+            </blockquote>
+            
+            <div className="text-yellow-300 font-semibold text-lg">
+              Team Ariflex
             </div>
           </div>
 
-          {/* Footer Sections */}
-          {footerSections.map((section, index) => (
-            <div key={index}>
-              <h4 className="text-lg font-bold text-white mb-4">{section.title}</h4>
-              <ul className="space-y-2">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-emerald-200 hover:text-yellow-400 transition-colors duration-300 text-left"
-                    >
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          {/* Contact Information */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div className="text-yellow-400 font-medium">ahmed@ariflex.co</div>
             </div>
-          ))}
-        </div>
+            
+            <div className="text-center">
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div className="text-yellow-400 font-medium">+966 54 003 9965</div>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div className="text-yellow-400 font-medium">Saudi Arabia</div>
+            </div>
+          </div>
 
-        {/* Stats Section */}
-        <div className="mt-16 pt-8 border-t border-emerald-800">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <Award className="w-12 h-12 text-yellow-400 mb-4" />
-              <div className="text-3xl font-bold text-white mb-2">10+</div>
-              <div className="text-emerald-200">Years of Excellence</div>
+          {/* Company Values */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">10+</div>
+              <div className="text-emerald-100">Years of Excellence</div>
             </div>
-            <div className="flex flex-col items-center">
-              <Users className="w-12 h-12 text-yellow-400 mb-4" />
-              <div className="text-3xl font-bold text-white mb-2">500+</div>
-              <div className="text-emerald-200">Successful Placements</div>
+            <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">500+</div>
+              <div className="text-emerald-100">Successful Placements</div>
             </div>
-            <div className="flex flex-col items-center">
-              <Target className="w-12 h-12 text-yellow-400 mb-4" />
-              <div className="text-3xl font-bold text-white mb-2">95%</div>
-              <div className="text-emerald-200">Client Satisfaction</div>
+            <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm">
+              <div className="text-3xl font-bold text-yellow-400 mb-2">95%</div>
+              <div className="text-emerald-100">Client Satisfaction</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t border-emerald-800">
+      {/* Bottom Section */}
+      <div className="border-t border-emerald-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-emerald-200 text-sm mb-4 md:mb-0">
-              © {currentYear} Ariflex. All rights reserved. Commercial Proposal - Bluemoon Marketing.
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <button 
-                onClick={() => scrollToSection("#about")}
-                className="text-emerald-200 hover:text-yellow-400 transition-colors"
-              >
-                About Us
-              </button>
-              <button 
-                onClick={() => scrollToSection("#services")}
-                className="text-emerald-200 hover:text-yellow-400 transition-colors"
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection("#contact")}
-                className="text-emerald-200 hover:text-yellow-400 transition-colors"
-              >
-                Contact
-              </button>
+          <div className="text-center">
+            <div className="text-emerald-200 text-sm">
+              © {currentYear} Ariflex. Commercial Proposal - Bluemoon Marketing. All rights reserved.
             </div>
           </div>
         </div>
@@ -158,7 +106,7 @@ const Footer = () => {
 
       {/* Scroll to Top Button */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={scrollToTop}
         className="fixed bottom-8 right-8 bg-yellow-500 hover:bg-yellow-400 text-emerald-900 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50"
         aria-label="Scroll to top"
       >
