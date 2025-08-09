@@ -116,9 +116,9 @@ const FeeStructure = () => {
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
                     selectedOption === option.id ? 'bg-yellow-100' : 'bg-emerald-100'
                   }`}>
-                    <option.icon className={`w-8 h-8 ${
+                    {React.createElement(option.icon, { className: `w-8 h-8 ${
                       selectedOption === option.id ? 'text-yellow-600' : 'text-emerald-700'
-                    }`} />
+                    }` })}
                   </div>
                   <h3 className="text-2xl font-bold text-emerald-900 mb-2">{option.title}</h3>
                   <p className="text-emerald-600">{option.subtitle}</p>
