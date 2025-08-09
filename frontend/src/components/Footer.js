@@ -21,7 +21,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="mb-8">
             <img 
-              src="https://customer-assets.emergentagent.com/job_5f2f4da9-f311-4324-ba20-5edbfc7b4dcf/artifacts/3q3yn9wl_Ariflex%20Logo-01.png"
+              src="https://customer-assets.emergentagent.com/job_interactive-proposal/artifacts/emhy27h7_Ariflex%20Logo-01.png"
               alt="Ariflex Logo"
               className="h-16 w-auto mx-auto mb-4 brightness-0 invert opacity-90"
             />
@@ -82,11 +82,11 @@ const Footer = () => {
               <div className="text-emerald-100">Years of Excellence</div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">500+</div>
-              <div className="text-emerald-100">Successful Placements</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">300+</div>
+              <div className="text-emerald-100">Successful Closings</div>
             </div>
             <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">95%</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">100%</div>
               <div className="text-emerald-100">Client Satisfaction</div>
             </div>
           </div>

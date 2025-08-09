@@ -14,7 +14,7 @@ const Header = ({ scrollY }) => {
           {/* Logo */}
           <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
-              src="https://customer-assets.emergentagent.com/job_5f2f4da9-f311-4324-ba20-5edbfc7b4dcf/artifacts/3q3yn9wl_Ariflex%20Logo-01.png"
+              src="https://customer-assets.emergentagent.com/job_interactive-proposal/artifacts/emhy27h7_Ariflex%20Logo-01.png"
               alt="Ariflex Logo"
               className="h-12 w-auto transition-transform duration-300 hover:scale-105"
             />

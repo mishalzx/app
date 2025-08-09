@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Award, Users } from "lucide-react";
 
 const Hero = () => {
   const [currentYear] = useState(new Date().getFullYear());
@@ -7,6 +8,11 @@ const Hero = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const stats = [
+    { icon: Award, value: "10+", label: "Years Experience" },
+    { icon: Users, value: "300+", label: "Successful Closings" }
+  ];
 
   return (
     <section id="hero" className="relative min-h-screen bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 overflow-hidden">
@@ -39,6 +45,22 @@ const Hero = () => {
               recruitment process outsourcing (RPO), and consultation services across 
               governmental, semi-governmental, and private sectors.
             </p>
+          </div>
+
+          {/* Stats */}
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto transition-all duration-1000 delay-500 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            {stats.map((stat, index) => (
+              <div 
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 group"
+              >
+                {React.createElement(stat.icon, { className: "w-8 h-8 text-yellow-400 mx-auto mb-4 group-hover:scale-110 transition-transform" })}
+                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-emerald-100 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
