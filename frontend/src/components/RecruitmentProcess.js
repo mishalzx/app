@@ -189,7 +189,7 @@ const RecruitmentProcess = () => {
                     <AccordionTrigger className="px-6 py-4 hover:bg-emerald-50 transition-colors [&[data-state=open]]:bg-emerald-50">
                       <div className="flex items-center space-x-4 text-left">
                         <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <step.icon className="w-6 h-6 text-emerald-700" />
+                          {React.createElement(step.icon, { className: "w-6 h-6 text-emerald-700" })}
                         </div>
                         <div>
                           <h4 className="text-lg font-bold text-emerald-900">{step.title}</h4>
