@@ -60,14 +60,9 @@ const FeeStructure = () => {
 
   const replacementTerms = [
     {
-      period: "Within 60 days",
+      period: "Within 90 days",
       compensation: "Free",
       description: "Complete free replacement offer"
-    },
-    {
-      period: "61-90 days",
-      compensation: "25%",
-      description: "25% compensation for finding alternative candidate"
     }
   ];
 
@@ -207,19 +202,14 @@ const FeeStructure = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {replacementTerms.map((term, index) => (
-                  <div 
-                    key={index}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:scale-105"
-                  >
-                    <div className={`text-3xl font-bold mb-2 ${term.compensation === 'Free' ? 'text-green-400' : 'text-yellow-400'}`}>
-                      {term.compensation === 'Free' ? 'FREE' : term.compensation}
-                    </div>
-                    <div className="text-emerald-100 font-semibold mb-2">{term.period}</div>
-                    <div className="text-emerald-200 text-sm">{term.description}</div>
+              <div className="flex justify-center items-center">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center hover:bg-white/15 transition-all duration-300 hover:scale-105 max-w-md mx-auto">
+                  <div className="text-4xl font-bold mb-4 text-green-400">
+                    FREE
                   </div>
-                ))}
+                  <div className="text-emerald-100 font-semibold mb-3 text-xl">Within 90 days</div>
+                  <div className="text-emerald-200">Complete free replacement offer</div>
+                </div>
               </div>
 
               <div className="mt-12 text-center">
