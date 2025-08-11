@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Download, Users, Building, Award } from "lucide-react";
-import { Button } from "./ui/button";
+import { Users, Building, Award } from "lucide-react";
 
 const OrgStructure = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedPositions, setSelectedPositions] = useState([]);
   const sectionRef = useRef(null);
   const chartRef = useRef(null);
+
+  // Pre-selected positions with golden highlight
+  const [selectedPositions] = useState([
+    'hr', 'finance-manager', 'art-director-head', 'it-specialist',
+    'graphic-designer-1', 'graphic-designer-2', 'content-creator-1',
+    'content-writer-bil-1', 'content-writer-eng-1', 'smm-manager-1',
+    'creative-manager-1', 'creative-manager-2', 'social-analyst-1',
+    'media-planner', 'community-manager-1', 'community-manager-2', 'community-manager-3'
+  ]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +39,8 @@ const OrgStructure = () => {
       { id: 'hr', name: 'HR Manager', salary: '', count: 1, reports: 'CEO' },
       { id: 'art-director-head', name: 'Art Director (Head of Creative)', salary: '', count: 1, reports: 'CEO' },
       { id: 'finance-manager', name: 'Finance Manager', salary: '', count: 1, reports: 'CEO' },
-      { id: 'head-cs-digital', name: 'Head of Client Services and Digital', salary: '', count: 1, reports: 'CEO' }
+      { id: 'head-cs-digital', name: 'Head of Client Services and Digital', salary: '', count: 1, reports: 'CEO' },
+      { id: 'it-specialist', name: 'IT Specialist', salary: '', count: 1, reports: 'CEO' }
     ],
     creative: [
       { id: 'graphic-designer-1', name: 'Graphic Designer', salary: '', count: 1, reports: 'Art Director (Head of Creative)' },
@@ -71,66 +79,11 @@ const OrgStructure = () => {
   };
 
   const departments = [
-    { key: 'executive', name: 'Executive Layer', icon: Building, total: 6, color: 'bg-blue-600' },
+    { key: 'executive', name: 'Executive Layer', icon: Building, total: 7, color: 'bg-blue-600' },
     { key: 'creative', name: 'Creative Department', icon: Award, total: 11, color: 'bg-indigo-600' },
     { key: 'clientServices', name: 'Client Services', icon: Users, total: 8, color: 'bg-blue-700' },
     { key: 'digital', name: 'Digital Department', icon: Users, total: 9, color: 'bg-blue-800' }
   ];
-
-  const togglePosition = (positionId) => {
-    setSelectedPositions(prev => 
-      prev.includes(positionId) 
-        ? prev.filter(id => id !== positionId)
-        : [...prev, positionId]
-    );
-  };
-
-  const downloadChart = async () => {
-    if (!chartRef.current) return;
-
-    try {
-      // Create a more detailed content for download
-      const selectedDetails = selectedPositions.map(id => {
-        const allPositions = [...orgStructure.executive, ...orgStructure.creative, ...orgStructure.clientServices, ...orgStructure.digital];
-        return allPositions.find(pos => pos.id === id);
-      }).filter(Boolean);
-
-      const content = `
-        Bluemoon Marketing - Organizational Structure
-        Location: Hail, Saudi Arabia
-        
-        SELECTED POSITIONS (${selectedPositions.length}):
-        ${selectedDetails.map(pos => `• ${pos.name} - Reports to: ${pos.reports}`).join('\n')}
-        
-        COMPLETE STRUCTURE:
-        Total FTE: ~34
-        
-        Executive Layer (6):
-        ${orgStructure.executive.map(pos => `• ${pos.name}`).join('\n')}
-        
-        Creative Department (11):
-        ${orgStructure.creative.map(pos => `• ${pos.name}`).join('\n')}
-        
-        Client Services (8):
-        ${orgStructure.clientServices.map(pos => `• ${pos.name}`).join('\n')}
-        
-        Digital Department (9):
-        ${orgStructure.digital.map(pos => `• ${pos.name}`).join('\n')}
-      `;
-
-      const blob = new Blob([content], { type: 'text/plain' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Bluemoon_Org_Structure_Selected_${selectedPositions.length}_positions.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Download failed:', error);
-    }
-  };
 
   return (
     <section id="organization" ref={sectionRef} className="py-20 bg-white">
@@ -145,27 +98,21 @@ const OrgStructure = () => {
               <strong>For Bluemoon Marketing</strong> - Corporate Structure (Saudi Arabia)
             </p>
             <p className="text-lg text-blue-700 font-medium">
-              Location: Hail, Saudi Arabia | Total FTE: ~34
+              Location: Hail, Saudi Arabia | Total FTE: ~35
             </p>
           </div>
 
-          {/* Selection Summary */}
-          <div className="bg-blue-50 rounded-2xl p-6 mb-12 border border-blue-200">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div>
-                <h3 className="text-xl font-bold text-blue-900 mb-2">Selected Positions</h3>
-                <p className="text-blue-700">
-                  {selectedPositions.length} position{selectedPositions.length !== 1 ? 's' : ''} selected
-                </p>
+          {/* Selection Summary with Golden Theme */}
+          <div className="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-2xl p-6 mb-12 border-2 border-yellow-300">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                <h3 className="text-xl font-bold text-yellow-800">Selected Positions for Recruitment</h3>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full ml-2"></div>
               </div>
-              <Button
-                onClick={downloadChart}
-                disabled={selectedPositions.length === 0}
-                className="bg-blue-600 hover:bg-blue-700 text-white mt-4 md:mt-0 disabled:opacity-50"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download Structure
-              </Button>
+              <p className="text-yellow-700 font-medium text-lg">
+                {selectedPositions.length} strategic positions highlighted for immediate recruitment
+              </p>
             </div>
           </div>
 
@@ -202,7 +149,7 @@ const OrgStructure = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-blue-900">{dept.name}</h3>
-                    <p className="text-blue-600">Click positions to select for recruitment</p>
+                    <p className="text-blue-600">Selected positions highlighted in gold for recruitment</p>
                   </div>
                 </div>
 
@@ -210,31 +157,36 @@ const OrgStructure = () => {
                   {orgStructure[dept.key].map((position, posIndex) => (
                     <div
                       key={position.id}
-                      onClick={() => togglePosition(position.id)}
-                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-105 ${
+                      className={`p-4 rounded-xl border-2 transition-all duration-300 ${
                         selectedPositions.includes(position.id)
-                          ? 'border-blue-600 bg-blue-100 shadow-lg'
+                          ? 'border-yellow-500 bg-gradient-to-br from-yellow-100 to-amber-100 shadow-lg ring-2 ring-yellow-300'
                           : 'border-blue-200 bg-white hover:border-blue-400 hover:shadow-md'
                       }`}
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-blue-900 text-sm leading-tight">
+                        <h4 className={`font-bold text-sm leading-tight ${
+                          selectedPositions.includes(position.id) ? 'text-yellow-900' : 'text-blue-900'
+                        }`}>
                           {position.name}
                         </h4>
+                        {selectedPositions.includes(position.id) && (
+                          <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                       
-                      <div className="text-gray-600 text-xs">
+                      <div className={`text-xs ${
+                        selectedPositions.includes(position.id) ? 'text-yellow-700' : 'text-gray-600'
+                      }`}>
                         Reports to: {position.reports}
                       </div>
 
                       {selectedPositions.includes(position.id) && (
-                        <div className="mt-2 flex items-center text-blue-600">
-                          <div className="w-4 h-4 bg-blue-600 rounded-full flex items-center justify-center mr-2">
-                            <svg className="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <span className="text-xs font-medium">Selected</span>
+                        <div className="mt-3 px-3 py-1 bg-yellow-500 text-white text-xs font-bold rounded-full text-center">
+                          SELECTED FOR RECRUITMENT
                         </div>
                       )}
                     </div>
@@ -253,7 +205,7 @@ const OrgStructure = () => {
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                 <div>
-                  <div className="text-4xl font-bold text-blue-300 mb-2">6</div>
+                  <div className="text-4xl font-bold text-blue-300 mb-2">7</div>
                   <div className="text-blue-100">Executive</div>
                 </div>
                 <div>
@@ -269,9 +221,15 @@ const OrgStructure = () => {
                   <div className="text-blue-100">Digital</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-yellow-400 mb-2">34</div>
+                  <div className="text-4xl font-bold text-yellow-400 mb-2">35</div>
                   <div className="text-blue-100">Total FTE</div>
                 </div>
+              </div>
+              
+              {/* Selected positions summary */}
+              <div className="mt-8 bg-yellow-500/20 rounded-2xl p-6 border border-yellow-400/30">
+                <div className="text-2xl font-bold text-yellow-300 mb-2">17</div>
+                <div className="text-yellow-100">Positions Selected for Immediate Recruitment</div>
               </div>
             </div>
           </div>
