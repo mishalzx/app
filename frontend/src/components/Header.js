@@ -10,13 +10,13 @@ const Header = ({ scrollY }) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center items-center h-20">
-          {/* Logo */}
+        <div className="flex justify-center items-center h-24">
+          {/* Logo - Made bigger */}
           <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
               src="https://customer-assets.emergentagent.com/job_interactive-proposal/artifacts/emhy27h7_Ariflex%20Logo-01.png"
               alt="Ariflex Logo"
-              className="h-12 w-auto transition-transform duration-300 hover:scale-105"
+              className="h-16 w-auto transition-transform duration-300 hover:scale-105"
             />
           </div>
         </div>
