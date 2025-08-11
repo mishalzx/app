@@ -206,19 +206,23 @@ const OrgStructure = () => {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                 <div>
                   <div className="text-4xl font-bold text-blue-300 mb-2">7</div>
-                  <div className="text-blue-100">Executive</div>
+                  <div className="text-blue-100 mb-1">Executive</div>
+                  <div className="text-yellow-300 text-sm font-medium">(4 selected)</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-blue-300 mb-2">11</div>
-                  <div className="text-blue-100">Creative</div>
+                  <div className="text-blue-100 mb-1">Creative</div>
+                  <div className="text-yellow-300 text-sm font-medium">(5 selected)</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-blue-300 mb-2">8</div>
-                  <div className="text-blue-100">Client Services</div>
+                  <div className="text-blue-100 mb-1">Client Services</div>
+                  <div className="text-yellow-300 text-sm font-medium">(5 selected)</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-blue-300 mb-2">9</div>
-                  <div className="text-blue-100">Digital</div>
+                  <div className="text-blue-100 mb-1">Digital</div>
+                  <div className="text-yellow-300 text-sm font-medium">(3 selected)</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-yellow-400 mb-2">35</div>
