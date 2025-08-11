@@ -53,6 +53,20 @@ const RecruitmentProcess = () => {
       note: "Delivery times: 5 business days for professionals; 10 business days for executives. By narrowing the search to three candidates, interviews are conducted as quickly and efficiently as possible."
     },
     {
+      id: "interviews",
+      icon: MessageSquare,
+      title: "Conducting Interviews & Follow‑up",
+      duration: "Ongoing",
+      description: "This phase is even more demanding than the search itself, requiring utmost care and focus.",
+      details: [
+        "Structured interview process coordination",
+        "Candidate and client feedback management",
+        "Long-term relationship building",
+        "Post-placement support and follow-up"
+      ],
+      note: "A significant part of our role is building long‑lasting strategic partnerships and remaining in contact with both candidates and clients."
+    },
+    {
       id: "reference",
       icon: Shield,
       title: "Reference Check",
@@ -93,20 +107,6 @@ const RecruitmentProcess = () => {
         "Final offer preparation and presentation"
       ],
       note: "Completion time: 3 business days."
-    },
-    {
-      id: "interviews",
-      icon: MessageSquare,
-      title: "Conducting Interviews & Follow‑up",
-      duration: "Ongoing",
-      description: "This phase is even more demanding than the search itself, requiring utmost care and focus.",
-      details: [
-        "Structured interview process coordination",
-        "Candidate and client feedback management",
-        "Long-term relationship building",
-        "Post-placement support and follow-up"
-      ],
-      note: "A significant part of our role is building long‑lasting strategic partnerships and remaining in contact with both candidates and clients."
     }
   ];
 
